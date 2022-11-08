@@ -21,7 +21,8 @@ if(isset($_POST['register'])){
     
         if($success===true){
             echo"<script>alert('User Registration Completed!')</script>";
-            header("Location: ../login/login.php");
+            // header("Location: ../login/login.php");
+            header("Location: ../views/all_product.php");
         }
         else{
             echo "<script>alert('regstration failed! ')</script>";

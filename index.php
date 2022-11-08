@@ -28,8 +28,9 @@
                 </li>';
         }
         else{
-            echo'<li class= "d-inline"><a style="font-size: 1.5rem;" href="login/login.php">Login</a></li>
-            <li class="d-inline"><a style="font-size: 1.5rem;" href="login/register.php">Register</a></li>';
+            echo
+            // '<li class= "d-inline"><a style="font-size: 1.5rem;" href="login/login.php">Login</a></li>';
+            '<li class="d-inline"><a style="font-size: 1.5rem;" href="login/register.php">Register</a></li>';
         }
         ?>
         

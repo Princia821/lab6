@@ -66,6 +66,12 @@ function select_one_product_ctr($id){
     return $product_instance->select_one_product_cls($id);
 }
 
+function search_product_ctr($name){
+    $product_instance=new Product_class();
+
+    return $product_instance->search_product_cls($name);
+}
+
 // functions for brand 
 function  add_brand_ctr($name){ 
     // create an instance of the product class

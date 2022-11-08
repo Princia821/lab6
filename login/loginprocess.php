@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
             $_SESSION['user_id'] = $result['customer_id'];
             $_SESSION['user_role'] = $result['user_role'];
             if($_SESSION['user_role']==0 or $_SESSION['user_role']==1){
-                header("Location: ../admin/dashboard2.php");
+                header("Location: ../views/all_product.php"); 
             }
             else{
                 header("Location: ../index.php");

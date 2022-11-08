@@ -71,6 +71,11 @@ class Product_class extends Connection{
 		return $this->fetchOne($sql); 
 	}
 
+	function search_product_cls($name){
+		$sql = "SELECT * FROM `products` WHERE product_title LIKE '%$name%' ";
+		return $this->fetch($sql);
+	}
+
     function  add_brand_cls($name){
 		// return true or false 
         $sql = "INSERT INTO `brands`(`brand_name`) VALUES ('$name')";  
@@ -100,6 +105,7 @@ class Product_class extends Connection{
         $sql = "DELETE FROM `brands` WHERE brand_id = '$id'"; 
 		return $this->query($sql);
 	}
+
 }
 
 ?>
