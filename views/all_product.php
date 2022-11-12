@@ -20,10 +20,12 @@
             
             <?php
               require('../controllers/product_controller.php');
+              require('../controllers/cart_controller.php');
+              include('menu.php'); 
             
-           
               $products=select_all_products_ctr();
               $location="../images";
+              $ipadd=getRealIpAddr();
             
               if(isset($_SESSION['user_id'])) {
                 $cid=$_SESSION['user_id'];
@@ -45,10 +47,16 @@
 
                   <div class="shop-item-image"><img src=<?php echo $product['product_image'];?> />
                   <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" >
+                  <!-- <h4 class="shop-item-title font-alt"> -->
                   <?= $product['product_title']?></a> </h4> <p> product price(usd): <?= $product['product_price']?> </p>
                   <div> <b>product id:</b> </h4><?= $product['product_id']?> </div>
-                  <div class="col-sm-8"><a class="btn btn-lg btn-block btn-round btn-b" href="#">Add To Cart</a></div>
+
+                  <!-- <div class="col-sm-8"><a class="btn btn-lg btn-block btn-round btn-b" href="#">Add To Cart</a></div> -->
                 </div>
+
+                <div class="shop-item-detail"><a class="btn btn-round btn-b" 
+                href="<?php echo '../actions/add_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>">
+                <span class="icon-basket">Add To Cart</span></a> </div>
                 
               </div>
               <?php }; ?>
@@ -56,7 +64,7 @@
             </div>
           
             <div class="row mt-30">
-              <div class="col-smg-12 align-center"><a class="btn btn-b btn-round" href="#">See all products</a></div>
+              <div class="col-smg-12 align-center"><a class="btn btn-b btn-round" href="cart.php">items in the cart</a></div>
             </div>
           </div>
 

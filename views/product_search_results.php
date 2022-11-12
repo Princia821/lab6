@@ -1,10 +1,28 @@
 <?php
 require('../controllers/product_controller.php'); 
+require('../controllers/cart_controller.php');
 
 if(!isset($_GET['searchTerm'])){
     header("location:../index.php");
 }
 
+              // $products=select_one_products_ctr();
+              // $location="../images";
+              // $ipadd=getRealIpAddr();
+            
+              // if(isset($_SESSION['user_id'])) {
+              //   $cid=$_SESSION['user_id'];
+              // }
+              // else{$cid=null;}
+              
+              // $qty=1;
+              // foreach ($products as $product){
+              //   $id=$product['product_id'];
+              // }
+          // $pid = $_GET['pid'];
+          $ipadd = getenv("REMOTE_ADDR");
+          // $cid = $_GET['cid'];
+          $qty = 1; 
 ?>
 
       <div class="main">
@@ -15,7 +33,7 @@ if(!isset($_GET['searchTerm'])){
                <!-- search for a particular product using ajax -->
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-              <form class="form-inline" method="get" >
+              <form class="form-inline" method="get">
                 <input class="form-control" type="search" placeholder="Search"  name="searchTerm">
                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search"><i class ="fa fa-search"></i></button>
                 
@@ -40,8 +58,14 @@ if(!isset($_GET['searchTerm'])){
                   <div> <b>product id:</b> </h4><?= $product['product_id']?> </div>
                   <div> <b>product name:</b> </h4><?= $product['product_title']?> </div>
                   <div> <b>product price (usd):</b> </h4><?= $product['product_price']?> </div>
-                  <div class="shop-item-detail"><a class="btn btn-round btn-b" href="#"><span class="icon-basket">
-                        Add To Cart</span></a></div>
+
+                  <!-- <div class="shop-item-detail"><a class="btn btn-round btn-b" href="../actions/add_cart.php"><span class="icon-basket">
+                        Add To Cart</span></a></div> -->
+
+                <div class="shop-item-detail"><a class="btn btn-round btn-b" 
+                href="<?php echo '../actions/add_cart.php?pid='.$product['product_id'].'&ipadd='.$ipadd.'&cid=&qty='.$qty ?>">
+                <span class="icon-basket">Add To Cart</span></a> </div>
+
                   
                 </div>
               </div>
@@ -56,7 +80,6 @@ if(!isset($_GET['searchTerm'])){
             <!-- </div> -->
           </div>
 
-       
     <!--  
     JavaScripts
     =============================================
@@ -75,4 +98,4 @@ if(!isset($_GET['searchTerm'])){
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script> -->
   </body>
-</html>
+</html> 
